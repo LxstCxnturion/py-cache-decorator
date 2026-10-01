@@ -1,3 +1,4 @@
+from functools import wraps
 from typing import Callable
 
 
@@ -5,8 +6,7 @@ def cache(func: Callable) -> Callable:
     cached_results = {}
 
     @wraps(func)
-    def wrapper(*args, **kwargs):
-        # Створюємо ключ з аргументів
+    def wrapper(*args, **kwargs) -> object:
         key = (args, tuple(sorted(kwargs.items())))
 
         if key in cached_results:
@@ -20,3 +20,4 @@ def cache(func: Callable) -> Callable:
         return result
 
     return wrapper
+    
