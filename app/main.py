@@ -20,4 +20,3 @@ def cache(func: Callable) -> Callable:
         return result
 
     return wrapper
-    
